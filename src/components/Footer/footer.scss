@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  width: 100vw;
+  height: 241px;
+  margin-top: 2rem;
+  background-color: #ffffff;
+  padding-top: 3rem;
+
+  &__inner {
+    &__title {
+      padding-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    &__list {
+      padding: 0;
+    }
+
+    &__list__item {
+      list-style: none;
+    }
+  }
+}
