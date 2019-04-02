@@ -1,0 +1,33 @@
+.medium-btn {
+  width: 163px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 24px;
+  background-color: #f62f5e;
+  outline: 0;
+  border: 0;
+
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+}
+.small-btn {
+  width: 91px;
+  height: 35px;
+  border-radius: 24px;
+  background-color: #f62f5e;
+  text-align: center;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  outline: 0;
+  border: 0;
+
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+}

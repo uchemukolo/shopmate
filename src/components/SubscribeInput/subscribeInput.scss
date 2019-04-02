@@ -1,0 +1,23 @@
+.subscribe {
+  width: 310px;
+  height: 36px;
+  border-radius: 18px;
+  border: solid 1px #e1e1e1;
+  background-color: #ffffff;
+
+  &__e-mail {
+    padding-left: 0.5rem;
+    width: 80%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #bababa;
+    outline: 0;
+    border: 0;
+
+    &:focus {
+      outline: 0;
+      border: 0;
+    }
+  }
+}
