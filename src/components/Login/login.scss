@@ -1,0 +1,46 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__form-input {
+    width: 300px;
+    height: 60px;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #6c6c6c;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  &__modalTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2E2E2E;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  &__remember {
+    font-size: 16px;
+    color: #B4B4B4;
+    font-weight: bold;
+  }
+  &__signin-btn {
+    margin-top: 0.5rem;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: #F62F5E;
+    font-weight: 400;
+    margin: 1rem auto;
+    &__footer-item {
+      margin: 1rem;
+      cursor: pointer;
+    }
+  }
+}
