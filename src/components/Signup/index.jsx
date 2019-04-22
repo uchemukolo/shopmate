@@ -15,23 +15,30 @@ export class Signup extends Component {
       confirmPassword: '',
       errors: {},
     };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  };
+
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value, errors: {} });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
     const { errors } = validateInput(this.state);
-    const { name, email, password, confirmPassword } = this.state;
+    const { name, email, password } = this.state;
     if (errors.name || errors.email || errors.password || errors.confirmPassword) {
       this.setState(() => ({
         errors
       }));
     } else {
-      this.props.onSubmit({
+      const signupData = {
         name,
         email,
-        password,
-        confirmPassword,
-      });
+        password
+      };
+
+      this.props.userSignupRequest(signupData)
     }
   };
   renderModalHeader = () => (
@@ -40,20 +47,72 @@ export class Signup extends Component {
 
   renderModalBody = () => (
     <form className="signup" id="signupForm" onSubmit={this.onSubmit}>
-    <input className="signup__form-input" type='name' placeholder='Name' value={this.state.name}
-             field='email' fieldError={this.state.errors.name}/>
-      <input className="signup__form-input" type='email' placeholder='Email' value={this.state.email}
-             field='email' fieldError={this.state.errors.email} onUpdate={this.updateState}/>
-      <input className="signup__form-input" type='password' placeholder='Password' value={this.state.password}
-             field='password' fieldError={this.state.errors.password}/>
-      <input className="signup__form-input"
-          type={'password'} placeholder={'Re-type Password'}
-          field={'confirmPassword'} value={this.state.confirmPassword}
-          fieldError={(this.state.errors.confirmPasswordError) ? this.state.errors.confirmPasswordError[0] : null}
-          validateField={this.validateInput} />
-        <div className="">
+    <div>
+          {this.state.errors.name
+            && (
+            <p id="signup-error" className="signup__red-text">
+              { this.state.errors.name }
+            </p>
+            )}
+      <input
+        onChange={this.onChange}
+        className="signup__form-input"
+        type='name' placeholder='Name'
+        value={this.state.name}
+        name='name'
+      />
+      </div>
+      <div>
+          {this.state.errors.email
+            && (
+            <p id="signup-error" className="signup__red-text">
+              { this.state.errors.email }
+            </p>
+            )}
+      <input
+        onChange={this.onChange}
+        className="signup__form-input"
+        type='email'
+        placeholder='Email'
+        value={this.state.email}
+        name='email'
+      />
+      </div>
+      <div>
+          {this.state.errors.password
+            && (
+            <p id="signup-error" className="signup__red-text">
+              { this.state.errors.password }
+            </p>
+            )}
+      <input
+        onChange={this.onChange}
+        className="signup__form-input"
+        type='password'
+        placeholder='Password'
+        value={this.state.password}
+        name='password'
+      />
+      </div>
+      <div>
+          {this.state.errors.confirmPassword
+            && (
+            <p id="signup-error" className="signup__red-text">
+              { this.state.errors.confirmPassword }
+            </p>
+            )}
+      <input
+        onChange={this.onChange}
+        className="signup__form-input"
+        type={'password'}
+        placeholder={'Re-type Password'}
+        name={'confirmPassword'}
+        value={this.state.confirmPassword}
+      />
+      </div>
+      <div className="">
         <Button name="Sign Up" classes="medium-btn" />
-        </div>
+      </div>
     </form>
   );
 
@@ -66,7 +125,12 @@ export class Signup extends Component {
 
   render() {
     return (
-      <Modal modalClose={this.props.modalClose} modalHeader={this.renderModalHeader} modalBody={this.renderModalBody} modalFooter={this.renderModalFooter} />
+      <Modal
+      modalClose={this.props.modalClose}
+      modalHeader={this.renderModalHeader}
+      modalBody={this.renderModalBody}
+      modalFooter={this.renderModalFooter}
+      />
     );
   }
 }

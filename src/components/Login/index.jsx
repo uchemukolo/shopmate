@@ -6,13 +6,20 @@ import './login.scss';
 
 
 export class Login extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    errors: {},
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errors: {},
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   };
 
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value, errors: {} });
+  }
   onSubmit = (e) => {
     e.preventDefault();
     const { errors } = validateInput(this.state);
@@ -22,10 +29,12 @@ export class Login extends Component {
         errors
       }));
     } else {
-      this.props.onSubmit({
+      const loginData = {
         email,
         password
-      });
+      };
+
+      this.props.userLoginRequest(loginData)
     }
   };
 
@@ -35,12 +44,44 @@ export class Login extends Component {
 
   renderModalBody = () => (
     <form className="login" id="loginForm" onSubmit={this.onSubmit}>
-      <input className="login__form-input" type='email' placeholder='Email' value={this.state.email}
-              field='email' fieldError={this.state.errors.email} onUpdate={this.updateState}/>
-      <input className="login__form-input" type='password' placeholder='Password' value={this.state.password}
-              field='password' fieldError={this.state.errors.password}/>
+      <div>
+        {this.state.errors.email
+          && (
+            <p id="signup-error" className="signup__red-text">
+              {this.state.errors.email}
+            </p>
+          )}
+        <input
+          onChange={this.onChange}
+          className="login__form-input"
+          type='email'
+          placeholder='Email'
+          value={this.state.email}
+          name='email'
+        />
+      </div>
+      <div>
+        {this.state.errors.password
+          && (
+            <p id="signup-error" className="signup__red-text">
+              {this.state.errors.password}
+            </p>
+          )}
+        <input
+          onChange={this.onChange}
+          className="login__form-input"
+          type='password'
+          placeholder='Password'
+          value={this.state.password}
+          name='password'
+        />
+      </div>
       <div className="login__remember">
-        <input type="checkbox" id="remember" checked={true}/><label htmlFor="remember">Remember</label>
+        <input
+        type="checkbox"
+        id="remember"
+        checked={true} />
+        <label htmlFor="remember">Remember</label>
       </div>
       <div className="login__signin-btn">
         <Button name="Sign In" classes="medium-btn" />
@@ -57,7 +98,12 @@ export class Login extends Component {
 
   render() {
     return (
-      <Modal modalClose={this.props.modalClose} modalHeader={this.renderModalHeader} modalBody={this.renderModalBody} modalFooter={this.renderModalFooter} />
+      <Modal
+      modalClose={this.props.modalClose}
+      modalHeader={this.renderModalHeader}
+      modalBody={this.renderModalBody}
+      modalFooter={this.renderModalFooter}
+      />
     );
   }
 }

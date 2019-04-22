@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.scss";
 
 const NavBar = () => (
-  <nav navbar navbar-light>
+  <nav navbar="true">
   <div className="nav-container">
   <div className="nav-container__logo">SHOPMATE</div>
     <div className="nav-container__menu-group">

@@ -21,10 +21,10 @@ const PopBanner = ({toggleModal}) => (
         </div>
         <div className="card-body">
           <div className="pop-banner-container__right__title">Let the Game begin</div>
-          <p className="pop-banner-container__right__details">
+          <div className="pop-banner-container__right__details">
             Registration is on - get ready for the Open
          <div className="pop-banner-container__right__button-div"><Button onclick={toggleModal} name="Register" classes="medium-btn" /></div>
-          </p>
+          </div>
         </div>
       </div>
     </div>
