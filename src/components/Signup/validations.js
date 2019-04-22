@@ -5,9 +5,7 @@ const validateInput = (data) => {
   const errorMsg = 'This field is required';
 
   if (Validator.isEmpty(data.name)) {
-    errors.email = errorMsg;
-  } else if (!Validator.isAlpha(data.name)) {
-    errors.email = 'Your name must be alphabets';
+    errors.name = errorMsg;
   }
   if (Validator.isEmpty(data.email)) {
     errors.email = errorMsg;
@@ -16,12 +14,12 @@ const validateInput = (data) => {
   }
   if (Validator.isEmpty(data.password)) {
     errors.password = errorMsg;
-  } else if (data.password.length < 8) {
-    errors.password = 'Your password must not be lass than 8 characters';
+  } else if (data.password.length < 6) {
+    errors.password = 'Your password must not be less than 6 characters';
   }
   if (Validator.isEmpty(data.confirmPassword)) {
     errors.confirmPassword = errorMsg;
-  } else if (data.confirmPassword === data.password) {
+  } else if (data.confirmPassword !== data.password) {
     errors.confirmPassword = 'Your password did not match';
   }
 

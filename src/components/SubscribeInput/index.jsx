@@ -5,7 +5,7 @@ import "./subscribeInput.scss";
 const SubscribeInput = () => (
 <div className="subscribe">
 <i className="far fa-envelope"></i>
-    <input type="email" class="subscribe__e-mail" placeholder="Your e-mail here"/>
+    <input type="email" className="subscribe__e-mail" placeholder="Your e-mail here"/>
   </div>
 );
 
