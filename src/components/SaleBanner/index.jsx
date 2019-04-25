@@ -6,12 +6,9 @@ const SaleBanner = ({toggleModal}) => (
   <div className="row">
     <div className="card mb-3 sale">
       <div className="row no-gutters sale__label-wrapper">
-      <div className="col-md-1">
-      <div className="sale__label-wrapper__label">SALE</div>
-      </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
         <div className="sale__sale-img">
-        <img src="../../assets/fashion-fashionable-footwear-267301.jpg" className="sale__sale-img" alt="Sale Item" />
+        <div className="sale__label-wrapper__label">SALE</div>
 </div>
         </div>
         <div className="col-md-8">

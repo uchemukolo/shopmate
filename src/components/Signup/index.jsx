@@ -130,6 +130,7 @@ export class Signup extends Component {
       modalHeader={this.renderModalHeader}
       modalBody={this.renderModalBody}
       modalFooter={this.renderModalFooter}
+      name={this.props.name}
       />
     );
   }

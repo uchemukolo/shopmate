@@ -5,6 +5,7 @@ import Button from '../Button';
 import "./discount.scss";
 
 const DiscountBanner = () => (
+  <div className="container">
       <div className="discount">
         <div className="discount__text-wrapper">
           <h1 className="card-title">10% Discount for your subscription</h1>
@@ -14,6 +15,7 @@ const DiscountBanner = () => (
           <Button name="Subscribe" classes="small-btn" />
           </div>
         </div>
+      </div>
       </div>
 );
 export default DiscountBanner;

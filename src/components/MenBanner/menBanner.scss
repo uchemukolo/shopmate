@@ -1,0 +1,27 @@
+.men-banner {
+  margin: 2rem auto;
+  width: 96vw;
+  height: 336px;
+  background-image:url("../../assets/Images/Images-modal4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__title {
+    font-size: 4rem;
+    font-weight: bolder;
+    padding-left: 2rem;
+  }
+
+  &__links {
+    display: flex;
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    list-style: none;
+    &__item {
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}

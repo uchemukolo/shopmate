@@ -6,33 +6,56 @@ import { userLoginRequest } from '../../actions/auth//login';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Signup from '../../components/Signup';
+import Login from '../../components/Login';
 import DiscountBanner from '../../components/DiscountBanner';
 import './homePage.scss';
 
 class Home extends Component {
-  state = {
-    modalOpen: false,
+  constructor(props) {
+    super(props);
+  this.state = {
+    modalOpenRegister: false,
+    modalOpenLogin: false,
   }
+  }
+  toggleModal = (e) => {
+    console.log('hello:===', e.target.name);
 
-  toggleModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen,
-    });
+    const {
+      modalOpenRegister,
+      modalOpenLogin
+    } = this.state;
+
+    switch (e.target.name) {
+      case 'Register':
+        this.setState({
+          modalOpenRegister: !modalOpenRegister,
+        })
+        break;
+        case 'Shop Now':
+        this.setState({
+          modalOpenLogin: !modalOpenLogin,
+        })
+        break;
+      default:
+        break;
+    }
   }
 
   render() {
     const {
-      modalOpen
+      modalOpenLogin,
+      modalOpenRegister
     } = this.state;
 
     return (
-      <div className="App">
+      <div>
       <div className="hero-1"></div>
-        <SaleBanner />
+        <SaleBanner toggleModal={this.toggleModal}/>
         <PopBanner toggleModal={this.toggleModal}/>
         <DiscountBanner />
-        {/* {modalOpen && <Login userLoginRequest={this.props.userLoginRequest} modalClose={this.toggleModal}/>} */}
-        {modalOpen && <Signup userSignupRequest={this.props.userSignupRequest} modalClose={this.toggleModal}/>}
+        {modalOpenLogin && <Login userLoginRequest={this.props.userLoginRequest} name="Shop Now" modalClose={this.toggleModal}/>}
+        {modalOpenRegister && <Signup userSignupRequest={this.props.userSignupRequest} name="Register" modalClose={this.toggleModal}/>}
       </div>
     );
   }

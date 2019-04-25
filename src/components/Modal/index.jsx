@@ -2,23 +2,19 @@ import React, { Component } from 'react';
 import './modal.scss';
 
 class Modal extends Component {
-
-  state = {
-
-  }
-
   render() {
     const {
       modalBody,
       modalHeader,
       modalFooter,
-      modalClose
+      modalClose,
+      name
     } = this.props;
 
     return (
       <div className="modal-container">
         <div className="modal-inner-dialog">
-          <span className="modal-close" onClick={() => modalClose()}>X</span>
+          <div className="modal-close" name={name} onClick={(e) => modalClose(e)}>X</div>
           {modalHeader()}
           {modalBody()}
           {modalFooter()}

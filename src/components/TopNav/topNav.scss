@@ -1,0 +1,80 @@
+.top-nav-container {
+  display: flex;
+  flex-direction: space-around;
+  align-items: center;
+  font-family: 'Montserrat';
+  padding-left: 2rem;
+  width: 100vw;
+  height: 49px;
+  background-color: #ffffff;
+  border: 1px solid #979797;
+  a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: #2E2E2E;
+  }
+
+
+  &__menu-group {
+    flex-grow: 1;
+    justify-content: center;
+
+    &__menu {
+      padding: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  &__top {
+    flex-grow: 1;
+    font-weight: bold;
+  }
+  &__salut {
+    flex-grow: 1;
+    color: #f62f5e;
+    padding: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__icon-menus {
+    position: relative;
+    padding-right: 2rem;
+    color: #2E2E2E;
+    font-weight: bold;
+    &__flag {
+      width: 30px;
+      height: 30px;
+      background-color: #f62f5e;
+      background: url('../../assets/Icon/gbr.png') no-repeat 10px;
+      padding: 1rem;
+      margin: 0.5rem;
+    }
+    &__flag-gbr {
+      padding-right: 7rem;
+    }
+
+    &__notify-icon {
+      background: url('../../assets/Icon/icons-bag.png') no-repeat 10px;
+      width: 30px;
+      cursor: pointer;
+    }
+    &__notification-count {
+      position: absolute;
+      top: -10px;
+      right: 11rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #f62f5e;
+      color: #ffffff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    &__bag-total {
+      padding-left: 1rem;
+    }
+  }
+}

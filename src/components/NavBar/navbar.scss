@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: space-around;
   align-items: center;
-  font-family: Montserrat;
+  font-family: 'Montserrat';
   padding-left: 2rem;
   width: 100vw;
   height: 72px;
-  background-color: #ffffff;
+  background-color: #2E2E2E;
+  a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: #ffffff;
+  }
 
   &__menu-group {
     flex-grow: 2;
@@ -31,27 +35,32 @@
   &__icon-menus {
     position: relative;
     padding-right: 2rem;
+    color: #ffffff;
+    input[type=search] {
+      background: url('../../assets/Icon/icons-search-white.png') no-repeat 10px center;
+      border:hsl(0, 0%, 0%);
+      padding: 1rem;
+      width: 5px;
+      font-size: 14px;
+      transition: width 0.4s ease-in-out;
+      cursor: pointer;
+      height: 100%;
+    }
+    input[type=search]:focus {
+      width: 250px;
+      background-color: #ffffff;
+      border-color: #66CC75;
+      border-radius: 10em;
+      height: 35px;
+      color: #2E2E2E;
+      outline: none;
+    }
+    input[type=search]::placeholder {
+      color: #2E2E2E;
+  }
     &__search-icon {
       margin-right: 2rem;
       cursor: pointer;
-    }
-    &__notify-icon {
-      width: 30px;
-      cursor: pointer;
-    }
-    &__notification-count {
-      position: absolute;
-      top: -5px;
-      right: 35px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: #f62f5e;
-      color: #ffffff;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  }
   }
 }
