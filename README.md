@@ -2,4 +2,4 @@
 
 Shopmate is an e-commerce system which allows users to search, add items to their shopping cart, create orders, and checkout successfully. 
 
-Link to Web application - https://friendly-wiles-d2e7b9.netlify.com/
+Link to Web application - https://shopmate.netlify.com/
