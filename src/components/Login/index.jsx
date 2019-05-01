@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button';
 import validateInput from './validations';
 import Modal from '../Modal';
+import { ModalContext } from '../../App';
 import './login.scss';
 
 
@@ -98,12 +99,21 @@ export class Login extends Component {
 
   render() {
     return (
-      <Modal
-      modalClose={this.props.modalClose}
-      modalHeader={this.renderModalHeader}
-      modalBody={this.renderModalBody}
-      modalFooter={this.renderModalFooter}
-      />
+      <ModalContext.Consumer>
+        {({ showModal, toggleModal, modalName}) => {
+          return (
+            (modalName === 'Login') && (
+            <Modal
+              showModal={showModal}
+              modalHeader={this.renderModalHeader}
+              modalBody={this.renderModalBody}
+              modalFooter={this.renderModalFooter}
+              closeModalCallback={toggleModal}
+            />)
+          )
+        }
+      }
+      </ModalContext.Consumer>
     );
   }
 }

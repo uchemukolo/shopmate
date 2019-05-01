@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MenBanner from '../../components/MenBanner';
-import Card from '../../components/Card';
+import ProductCard from '../../components/ProductCard';
 import { products } from './fixtures';
 
 import './menCatalogue.scss';
@@ -12,6 +12,12 @@ class MenCatalogue extends Component {
 
   }
   }
+
+  // componentDidMount() {
+  //   const { getAllProducts: getEntriesRequest } = this.props;
+  //   getEntriesRequest();
+  // }
+
   render() {
     return (
       <div>
@@ -22,8 +28,8 @@ class MenCatalogue extends Component {
         </div>
         <div className="col-md-9 men-catalogue__main-box__List">
         {products.map(product => (
-        <Card 
-        image={product.image}
+        <ProductCard
+        image={product.thumbnail}
         name={product.name}
         price={product.price}
         />

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button";
 import "./popBanner.scss";
 
-const PopBanner = ({ toggleModal }) => (
+const PopBanner = () => (
   <div className="row">
     <div className="pop-banner-container">
       <div className="col-md-4 pop-banner-container__left">
@@ -33,7 +33,6 @@ const PopBanner = ({ toggleModal }) => (
             Registration is on - get ready for the Open
             <div className="pop-banner-container__right__button-div">
               <Button
-                onclick={toggleModal}
                 name="Register"
                 classes="medium-btn"
               />
