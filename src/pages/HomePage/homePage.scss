@@ -5,4 +5,22 @@
   background-position: center;
   width: 100%;
   height: 480px;
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+
+  &__title {
+    color: #f62f5e;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Montserrat';
+  }
+  &__sub-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'PlayfairDisplay';
+  }
+}
 }

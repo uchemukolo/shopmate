@@ -22,6 +22,9 @@
     &__item {
       list-style: none;
       cursor: pointer;
+      &:hover {
+        color: #f62f5e;
+      }
     }
   }
 }

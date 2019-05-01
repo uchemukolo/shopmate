@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Signup from '../../components/Signup';
 import Login from '../../components/Login';
+import Button from '../../components/Button';
 import DiscountBanner from '../../components/DiscountBanner';
 import './homePage.scss';
 
@@ -50,7 +51,19 @@ class Home extends Component {
 
     return (
       <div>
-      <div className="hero-1"></div>
+      <div className="hero-1">
+      <div className="hero-1__wrap">
+      <div className="hero-1__wrap__title">
+        MEN & WOMEN FASHION
+        <p className="hero-1__wrap__sub-title">
+          Cheap & Quality
+        </p>
+        </div>
+        <div>
+          <Button name="SHOP NOW" classes="big-btn" />
+        </div>
+      </div>
+      </div>
         <SaleBanner toggleModal={this.toggleModal}/>
         <PopBanner toggleModal={this.toggleModal}/>
         <DiscountBanner />
