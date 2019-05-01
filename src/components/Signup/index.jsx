@@ -1,33 +1,38 @@
-import React, { Component } from 'react';
-import Button from '../Button';
-import validateInput from './validations';
-import Modal from '../Modal';
-import './signup.scss';
-
+import React, { Component } from "react";
+import Button from "../Button";
+import validateInput from "./validations";
+import Modal from "../Modal";
+import { ModalContext } from "../../App";
+import "./signup.scss";
 
 export class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      errors: {},
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  };
+  }
 
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value, errors: {} });
   }
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
     const { errors } = validateInput(this.state);
     const { name, email, password } = this.state;
-    if (errors.name || errors.email || errors.password || errors.confirmPassword) {
+    if (
+      errors.name ||
+      errors.email ||
+      errors.password ||
+      errors.confirmPassword
+    ) {
       this.setState(() => ({
         errors
       }));
@@ -38,77 +43,72 @@ export class Signup extends Component {
         password
       };
 
-      this.props.userSignupRequest(signupData)
+      this.props.userSignupRequest(signupData);
     }
   };
-  renderModalHeader = () => (
-    <div className="signup__modalTitle">Sign Up</div>
-  );
+  renderModalHeader = () => <div className="signup__modalTitle">Sign Up</div>;
 
   renderModalBody = () => (
     <form className="signup" id="signupForm" onSubmit={this.onSubmit}>
-    <div>
-          {this.state.errors.name
-            && (
-            <p id="signup-error" className="signup__red-text">
-              { this.state.errors.name }
-            </p>
-            )}
-      <input
-        onChange={this.onChange}
-        className="signup__form-input"
-        type='name' placeholder='Name'
-        value={this.state.name}
-        name='name'
-      />
+      <div>
+        {this.state.errors.name && (
+          <p id="signup-error" className="signup__red-text">
+            {this.state.errors.name}
+          </p>
+        )}
+        <input
+          onChange={this.onChange}
+          className="signup__form-input"
+          type="name"
+          placeholder="Name"
+          value={this.state.name}
+          name="name"
+        />
       </div>
       <div>
-          {this.state.errors.email
-            && (
-            <p id="signup-error" className="signup__red-text">
-              { this.state.errors.email }
-            </p>
-            )}
-      <input
-        onChange={this.onChange}
-        className="signup__form-input"
-        type='email'
-        placeholder='Email'
-        value={this.state.email}
-        name='email'
-      />
+        {this.state.errors.email && (
+          <p id="signup-error" className="signup__red-text">
+            {this.state.errors.email}
+          </p>
+        )}
+        <input
+          onChange={this.onChange}
+          className="signup__form-input"
+          type="email"
+          placeholder="Email"
+          value={this.state.email}
+          name="email"
+        />
       </div>
       <div>
-          {this.state.errors.password
-            && (
-            <p id="signup-error" className="signup__red-text">
-              { this.state.errors.password }
-            </p>
-            )}
-      <input
-        onChange={this.onChange}
-        className="signup__form-input"
-        type='password'
-        placeholder='Password'
-        value={this.state.password}
-        name='password'
-      />
+        {this.state.errors.password && (
+          <p id="signup-error" className="signup__red-text">
+            {this.state.errors.password}
+          </p>
+        )}
+        <input
+          onChange={this.onChange}
+          className="signup__form-input"
+          type="password"
+          placeholder="Password"
+          value={this.state.password}
+          name="password"
+        />
       </div>
       <div>
-          {this.state.errors.confirmPassword
-            && (
-            <p id="signup-error" className="signup__red-text">
-              { this.state.errors.confirmPassword }
-            </p>
-            )}
-      <input
-        onChange={this.onChange}
-        className="signup__form-input"
-        type={'password'}
-        placeholder={'Re-type Password'}
-        name={'confirmPassword'}
-        value={this.state.confirmPassword}
-      />
+        {this.state.errors.confirmPassword && (
+          <p id="signup-error" className="signup__red-text">
+            {this.state.errors.confirmPassword}
+          </p>
+        )}
+        <input
+          onChange={this.onChange}
+          className="signup__form-input"
+          type={"password"}
+          placeholder={"Re-type Password"}
+          name={"confirmPassword"}
+          value={this.state.confirmPassword}
+        />
       </div>
       <div className="">
         <Button name="Sign Up" classes="medium-btn" />
@@ -117,20 +117,29 @@ export class Signup extends Component {
   );
 
   renderModalFooter = () => (
-      <div className="signup__footer">
+    <div className="signup__footer">
       <span className="signup__footer__footer-item1">Already a member?</span>
       <span className="signup__footer__footer-item2">Sign In</span>
-      </div>
+    </div>
   );
 
   render() {
     return (
-      <Modal
-      modalClose={this.props.modalClose}
-      modalHeader={this.renderModalHeader}
-      modalBody={this.renderModalBody}
-      modalFooter={this.renderModalFooter}
-      />
+      <ModalContext.Consumer>
+        {({ showModal, toggleModal, modalName }) => {
+          return (
+            (modalName === 'Signup') && (
+              <Modal
+                showModal={showModal}
+                modalHeader={this.renderModalHeader}
+                modalBody={this.renderModalBody}
+                modalFooter={this.renderModalFooter}
+                closeModalCallback={toggleModal}
+              />
+            )
+          )
+        }}
+      </ModalContext.Consumer>
     );
   }
 }

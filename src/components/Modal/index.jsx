@@ -3,28 +3,25 @@ import './modal.scss';
 
 class Modal extends Component {
 
-  state = {
-
-  }
-
   render() {
     const {
       modalBody,
       modalHeader,
       modalFooter,
-      modalClose
+      name,
+      showModal,
+      closeModalCallback
     } = this.props;
 
     return (
-      <div className="modal-container">
+      showModal && <div className="modal-container">
         <div className="modal-inner-dialog">
-          <span className="modal-close" onClick={() => modalClose()}>X</span>
+          <div className="modal-close" name={name} onClick={closeModalCallback}>X</div>
           {modalHeader()}
           {modalBody()}
           {modalFooter()}
         </div>
-      </div>
-    );
+      </div>)
   }
 }
 
