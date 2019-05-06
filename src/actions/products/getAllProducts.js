@@ -12,15 +12,12 @@ export const getAllProductsFailure = payload => ({
   payload
 });
 
-export const userLoginRequest = () => dispatch => axios.get(
+export const getAllProductsRequest = () => dispatch => axios.get(
   'https://backendapi.turing.com/products',
-)
-  .then((response) => {
+  ).then((response) => {
     console.log(response, "Response");
-    const { accessToken } = response.data;
-    localStorage.setItem('TurningToken', accessToken);
-    dispatch(getAllProducts(response.data));
-    return response.data;
+    dispatch(getAllProducts(response.data.rows));
+    return response.data.rows;
   }, (error) => {
     dispatch(getAllProductsFailure(error.response.data));
     return error.response.data;
