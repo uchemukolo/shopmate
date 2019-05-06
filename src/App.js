@@ -4,7 +4,7 @@ import TopNav from './components/TopNav';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import MenCatalogue from './pages/MenCatalogue';
+import MenCatalogue from './pages/Catalogue';
 
 export const ModalContext = React.createContext();
 
